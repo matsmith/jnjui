@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>JNJUI</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+	<!--[if lte ie 8]>
+	<script src="vendor/javascripts/html5shiv.js"></script>
+	<![endif]-->
+	<script src="vendor/javascripts/jquery.js"></script>
+	<script src="vendor/javascripts/qbox.js"></script>
+	<script src="assets/javascripts/jnj-accordion.js"></script>
+	<script src="assets/javascripts/jnj-drawer.js"></script>
+
+	<script src="assets/javascripts/demo.js"></script>
+
+	<link rel="stylesheet" href="assets/stylesheets/jnjui.css" />
+
+	<link rel="stylesheet" href="assets/stylesheets/demo.css" />
+
+</head>
+<body>
+	<aside role="complementary" class="drawer">
+		<header class="drawer_header">
+			<a href="#"><img src="assets/images/logo.png" class="logo" /></a>
+		</header>
+		<div class="drawer_body">
+			<nav role="navigation" class="invert acdn open">
+				<div class="acdn_header">
+					<h5>Table of Contents</h5>
+				</div>
+				<div class="acdn_body">
+					<ul>
+						<li><a href="#mod">The <code>.mod</code> Layout Component</a></li>
+						<li><a href="#typography">Typography</a></li>
+						<li><a href="#grid">Flexible 12-Column Grid</a></li>
+						<li><a href="#navigation">Navigation</a></li>
+						<li><a href="#forms">Forms</a></li>
+						<li><a href="#buttons">Buttons</a></li>
+						<li><a href="#tables">Tables</a></li>
+						<li><a href="#lists">Lists</a></li>
+						<li><a href="#accordion">Accordion List</a></li>
+						<li><a href="#modals">Modals</a></li>
+						<li><a href="#alerts">Alerts and Badges</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="acdn">
+				<div class="acdn_header">
+					<h5>The Drawer Component</h5>
+				</div>
+				<div class="acdn_body">
+					<p>This is a collapsible panel that can be used for navigation, user preferences or other controls. On wider screens, it is fixed to the left of the browser window, and on small screens it's fixed to the top. (In IE8 and below, due to the lack of support for media queries, the drawer is always fixed to the top of the viewport)</p>
+					<p>It is opened by a click event on the drawer, and closed with a click event anywhere outside of it.</p>
+					<p>The show/hide events are attached with the <code>$(".drawer").jnjDrawer()</code> jQuery method.</p>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+	<main role="main">
+		<section class="mod">
+			<header class="mod_header">
+				<h1>JNJUI</h1>
+			</header>
+			<div class="mod_body copy">
+				<p><strong>JNJUI</strong> is a library of user interface patterns and components for use on Johnson and Johnson internal web applications.</p>
+				<h3>Usage</h3>
+				<p><strong>JNJUI</strong> is intended to be included as-is, and extended or modified in your project's CSS or JavaScript. This will ensure that future updates and bugfixes to the project can be integrated as smoothly as possible. If you'd like to browse the unminified source, check out the src directory, but for production, use the packaged files in dist.</p>
+				<p><strong>Required: </strong>Include the <strong>JNJUI</strong> CSS file in your document.</p>
+				<p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;dist/assets/stylesheets/jnjui.css&quot; /&gt;</code></p>
+				<p><strong>Optional:</strong> If you're using the sidebar drawer, <a href="#accordion">accordion</a> or <a href="#modals">modal</a> components, include the relevant JavaScript files.</p>
+				<p>
+					<code>
+						&lt;script src=&quot;dist/vendor/javascripts/jquery.js&quot;&gt;&lt;/script&gt;<br />
+						&lt;script src=&quot;dist/vendor/javascripts/qbox.js&quot;&gt;&lt;/script&gt;<br />
+						&lt;script src=&quot;dist/assets/javascripts/jnj-accordion.js&quot;&gt;&lt;/script&gt;<br />
+						&lt;script src=&quot;dist/assets/javascripts/jnj-drawer.js&quot;&gt;&lt;/script&gt;<br />
+					</code>
+				</p>
+				<p>For support in IE8 or below, include the HTML5shiv in conditional comments.</p>
+				<p>
+					<pre><code>&lt;!--[if lte ie 8]&gt;
+&lt;script src=&quot;dist/vendor/javascripts/html5shiv.js&quot;&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</code></pre>
+				</p>
+				<h5>Browser Support</h5>
+				<p>Full support in the latest versions of:</p>
+				<ul>
+					<li>Chrome</li>
+					<li>Internet Explorer</li>
+					<li>Firefox</li>
+					<li>Safari</li>
+					<li>Safari for iOS</li>
+					<li>Android</li>
+				</ul>
+				<p>Basic support is included for Internet Explorer 8, but there aren't any extraneous JavaScript polyfills included to patch support for features like media queries, form placeholders, box shadows or the like.</p>
+			</div>
+		</section>
+
+		<section class="mod" id="mod">
+			<header class="mod_header">
+				<h2>The <code>.mod</code> Layout Component</h2>
+			</header>
+			<div class="mod_body">
+				<p>A reusable, nestable layout pattern for creating distinct content sections in your application. For example, each section of this documentation is a <code>.mod</code>. The most basic implementation of a <code>.mod</code> is composed of a block-level parent element with the class <code>mod</code>. You can include optional modifier classes, as well as the optional child elements <code>.mod_header</code> and <code>.mod_body</code>.</p>
+
+				<h3>Example Markup</h3>
+				<pre><code>&lt;section class=&quot;mod&quot;&gt;
+    &lt;header class=&quot;mod_header&quot;&gt;
+        &lt;h2&gt;Title&lt;/h2&gt;
+    &lt;/header&gt;
+    &lt;div class=&quot;mod_body&quot;&gt;
+        &lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+				<section class="mod m_highlight">
+					<header class="mod_header">
+						<h2>Highlight</h2>
+					</header>
+					<div class="mod_body">
+						<p>This is a nested <code>.mod</code> with the <code>m_highlight</code> modifier class on the parent element. It adds the background color.</p>
+					</div>
+				</section>
+
+				<section class="mod m_pop">
+					<header class="mod_header">
+						<h2>Pop</h2>
+					</header>
+					<div class="mod_body">
+						<p>This is a nested <code>.mod</code> with the <code>m_pop</code> modifier class on the parent element. It adds the box-shadow.</p>
+					</div>
+				</section>
+
+				<section class="mod m_highlight m_pop">
+					<header class="mod_header">
+						<h2>Highlight &amp; Pop</h2>
+					</header>
+					<div class="mod_body">
+						<p>These modifier classes extend each other and can be combined.</p>
+					</div>
+				</section>
+
+				<p>Modifier classes may also be created to style different types of content. For instance, adding the <a href="#lists"><code>m_list</code></a> class to the parent elelment changes padding in the <code>.mod_body</code> element for nicer list formatting. Feel free to create new modifier classes following the pattern <code>.m_[context]</code>.</p>
+
+			</div>
+		</section>
+
+		<section class="mod" id="typography">
+			<header class="mod_header">
+				<h2>Typography</h2>
+			</header>
+			<div class="mod_body copy">
+				<h1>Header Level 1</h1>
+				<h2>Header Level 2</h2>
+				<h3>Header Level 3</h3>
+				<h4>Header Level 4</h4>
+				<h5>Header Level 5</h5>
+				<h6>Header Level 6</h6>
+				<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+				<ol>
+				   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+				   <li>Aliquam tincidunt mauris eu risus.</li>
+				</ol>
+				<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+				<ul>
+				   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+				   <li>Aliquam tincidunt mauris eu risus.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="mod" id="grid">
+			<header class="mod_header">
+				<h2>Flexible 12-Column Grid</h2>
+			</header>
+			<div class="mod_body">
+				<p><code>l_row</code>s contain <code>l_col</code>s. The column elements should add up to no more than 12. These classes can be added to any element, not just generic containers for layout. (See the <a href="#forms">form</a> sizing section below for an example.)</p>
+				<div class="l_row">
+					<div class="l_col l_col_1" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_1</code></div>
+					<div class="l_col l_col_11" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_11</code></div>
+				</div>
+				<div class="l_row">
+					<div class="l_col l_col_2" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_2</code></div>
+					<div class="l_col l_col_10" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_10</code></div>
+				</div>
+				<div class="l_row">
+					<div class="l_col l_col_3" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_3</code></div>
+					<div class="l_col l_col_9" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_9</code></div>
+				</div>
+				<div class="l_row">
+					<div class="l_col l_col_4" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_4</code></div>
+					<div class="l_col l_col_8" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_8</code></div>
+				</div>
+				<div class="l_row">
+					<div class="l_col l_col_5" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_5</code></div>
+					<div class="l_col l_col_7" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_7</code></div>
+				</div>
+				<div class="l_row">
+					<div class="l_col l_col_6" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_6</code></div>
+					<div class="l_col l_col_6" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_6</code></div>
+				</div>
+				<p>You can also use the shorthand, metric-prefix keyword aliases, if you prefer.</p>
+				<div class="l_row">
+					<div class="pico" style="background-color: rgba(0, 0, 0, 0.1);"><code>.pico</code></div>
+					<div class="giga" style="background-color: rgba(0, 0, 0, 0.1);"><code>.giga</code></div>
+				</div>
+				<div class="l_row">
+					<div class="nano" style="background-color: rgba(0, 0, 0, 0.1);"><code>.nano</code></div>
+					<div class="mega" style="background-color: rgba(0, 0, 0, 0.1);"><code>.mega</code></div>
+				</div>
+				<div class="l_row">
+					<div class="micro" style="background-color: rgba(0, 0, 0, 0.1);"><code>.micro</code></div>
+					<div class="kilo" style="background-color: rgba(0, 0, 0, 0.1);"><code>.kilo</code></div>
+				</div>
+				<div class="l_row">
+					<div class="milli" style="background-color: rgba(0, 0, 0, 0.1);"><code>.milli</code></div>
+					<div class="hecto" style="background-color: rgba(0, 0, 0, 0.1);"><code>.hecto</code></div>
+				</div>
+				<div class="l_row">
+					<div class="centi" style="background-color: rgba(0, 0, 0, 0.1);"><code>.centi</code></div>
+					<div class="deka" style="background-color: rgba(0, 0, 0, 0.1);"><code>.deka</code></div>
+				</div>
+				<div class="l_row">
+					<div class="deci" style="background-color: rgba(0, 0, 0, 0.1);"><code>.deci</code></div>
+					<div class="deci" style="background-color: rgba(0, 0, 0, 0.1);"><code>.deci</code></div>
+				</div>
+				<p>This grid is percentage-based, meaning that the columns' calculated widths are calculated based on their context. You can nest these grids as deeply as you wish, but be aware that the calculated width will change depending on the width of its parent container.</p>
+				<div class="l_row">
+					<div class="l_col l_col_6" style="background-color: rgba(0, 0, 0, 0.1);">
+						<div class="nano" style="background-color: rgba(0, 0, 0, 0.1);"><code>.nano</code></div>
+						<div class="nano" style="background-color: rgba(0, 0, 0, 0.1);"><code>.nano</code></div>
+						<div class="micro" style="background-color: rgba(0, 0, 0, 0.1);"><code>.micro</code></div>
+						<div class="centi" style="background-color: rgba(0, 0, 0, 0.1);"><code>.centi</code></div>
+					</div>
+					<div class="l_col l_col_6" style="background-color: rgba(0, 0, 0, 0.1);">
+						<div class="deci" style="background-color: rgba(0, 0, 0, 0.1);"><code>.deci</code></div>
+						<div class="deci" style="background-color: rgba(0, 0, 0, 0.1);"><code>.deci</code></div>
+					</div>
+				</div>
+				<p>Add the <code>l_offset</code> class and grid elements can also be offset using similarly named classes.</p>
+				<div class="l_row">
+					<div class="l_col l_col_6 l_offset l_offset_col_4" style="background-color: rgba(0, 0, 0, 0.1);"><code>.l_col_6 .l_offset .l_offset_col_4</code></div>
+				</div>
+				<div class="l_row">
+					<div class="mega l_offset l_offset_nano" style="background-color: rgba(0, 0, 0, 0.1);"><code>.mega .l_offset .l_offset_nano</code></div>
+				</div>
+				<p>All grid elements will stack vertically on small screen sizes.</p>
+			</div>
+		</section>
+
+		<section class="mod" id="navigation">
+			<header class="mod_header">
+				<h2>Navigation</h2>
+			</header>
+			<div class="mod_body">
+				<p>All navigation components are composed of a <code>nav</code> element that contains a <code>ul</code> as a direct child.</p>
+				<h3>Default</h3>
+				<p>You can limit the width of a vertical navigation list by adding any of the <a href="#grid">grid helper classes</a>. Be aware that any nested levels of navigation inherit the width assigned to the parent.</p>
+				<nav role="navigation" class="milli">
+					<ul>
+						<li>
+							<a href="#">Configure</a>
+							<ul>
+								<li><a href="#">Build A Menu</a></li>
+								<li><a href="#">Branding</a></li>
+								<li><a href="#">Biometrics</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Users</a></li>
+						<li class="active"><a href="#">Colors</a></li>
+						<li><a href="#">Other Configurations</a></li>
+					</ul>
+				</nav>
+				<p>&nbsp;</p>
+				<h3>Horizontal</h3>
+				<p>Add the class <code>horizontal</code> to the nav element to align nav items next to each other.</p>
+				<nav role="navigation" class="horizontal">
+					<ul>
+						<li>
+							<a href="#">Configure</a>
+							<ul>
+								<li><a href="#">Build A Menu</a></li>
+								<li><a href="#">Branding</a></li>
+								<li><a href="#">Biometrics</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Users</a></li>
+						<li class="active"><a href="#">Colors</a></li>
+						<li><a href="#">Other Configurations</a></li>
+					</ul>
+				</nav>
+
+				<h3>Navbar</h3>
+				<p>For a full width navigation bar, add the class <code>navbar</code>. Add the class <code>sticky</code> to fix it to the top of the viewport.</p>
+				<nav role="navigation" class="navbar">
+					<ul>
+						<li>
+							<a href="#">Configure</a>
+							<ul>
+								<li><a href="#">Build A Menu</a></li>
+								<li><a href="#">Branding</a></li>
+								<li><a href="#">Biometrics</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Users</a></li>
+						<li class="active"><a href="#">Colors</a></li>
+						<li><a href="#">Other Configurations</a></li>
+					</ul>
+				</nav>
+
+				<h3>Breadcrumbs</h3>
+				<p>A list of items with the class <code>breadcrumb</code>.</p>
+				<nav class="breadcrumb">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Level One</a></li>
+						<li>Level Two</li>
+					</ul>
+				</nav>
+
+				<h3>Invert</h3>
+				<p>Add the class <code>invert</code> to use any navigation component over a dark background.</p>
+				<div style="background-color: #c85656; padding: 0.6875em;">
+					<nav role="navigation" class="milli invert">
+						<ul>
+							<li>
+								<a href="#">Configure</a>
+								<ul>
+									<li><a href="#">Build A Menu</a></li>
+									<li><a href="#">Branding</a></li>
+									<li><a href="#">Biometrics</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Users</a></li>
+							<li class="active"><a href="#">Colors</a></li>
+							<li><a href="#">Other Configurations</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<section class="mod" id="forms">
+			<header class="mod_header">
+				<h2>Forms</h2>
+			</header>
+			<div class="mod_body">
+					<h3>Default Inline Form</h3>
+					<form>
+				        <input type="text" placeholder="Email" class="micro">
+				        <input type="password" placeholder="Password" class="nano">
+
+				        <select id="market" class="nano">
+				        	<option>US</option>
+				        </select>
+
+				        <label for="remember" class="nano">
+				            <input id="remember-two" type="checkbox"><label for="remember-two"> Remember me</label>
+				        </label>
+
+				        <button type="submit" class="nano">Sign in</button>
+					</form>
+
+					<h3>Vertical Form</h3>
+					<form class="form_vertical">
+				        <label for="email">Email</label>
+				        <input id="email" type="text" placeholder="Email" class="micro">
+
+				        <label for="password">Password</label>
+				        <input id="password" type="password" placeholder="Password" class="micro">
+				        <span class="form_hint">Minimum 200 characters</span>
+
+				        <textarea cols="50" rows="5">This is the sample text.</textarea>
+
+				        <label for="state">State</label>
+				        <select id="state" class="mini">
+				            <option>MI</option>
+				        </select>
+
+				        <label for="remember-three" class="toggle">
+				            <input id="remember-three" type="checkbox"> Remember me
+				        </label>
+
+				        <button type="submit">Sign in</button>
+					</form>
+
+					<h3>Horizontal Form</h3>
+					<p>Add the class <code>form_horizontal</code> to a containing element. Horizontal forms require that each "row" of your form be wrapped in a <code>.control_group</code>.</p>
+					<form class="form_horizontal">
+						<div class="control_group">
+							<label class="control_label nano" for="inputEmail">Email</label>
+							<input type="text" id="inputEmail" placeholder="Email" class="milli">
+						</div>
+						<div class="control_group">
+							<label class="control_label nano" for="inputPassword">Password</label>
+							<input type="password" id="inputPassword" placeholder="Password" class="milli">
+							<span class="form_hint">Minimum 200 characters</span>
+						</div>
+						<div class="control_group l_offset l_offset_nano">
+							<label class="toggle">
+								<input id="remember-four" type="checkbox"><label for="remember-four"> Remember me</label>
+							</label>
+						</div>
+						<div class="control_group l_offset l_offset_nano">
+							<button type="submit">Sign in</button>
+						</div>
+					</form>
+
+					<h3>Input Sizing</h3>
+					<p>Form elements can be nested children of <a href="#grid">grid</a> elements, or the grid helper classes can be applied directly to the inputs, depending on the needs of your application.</p>
+					<form>
+						<div class="control_group">
+							<input type="text" placeholder=".pico" class="pico" />
+							<input type="text" placeholder=".giga" class="giga" />
+						</div>
+						<div class="control_group">
+							<input type="text" placeholder=".nano" class="nano" />
+							<input type="text" placeholder=".mega" class="mega" />
+						</div>
+						<div class="control_group">
+							<input type="text" placeholder=".micro" class="micro" />
+							<input type="text" placeholder=".kilo" class="kilo" />
+						</div>
+						<div class="control_group">
+							<input type="text" placeholder=".milli" class="milli" />
+							<input type="text" placeholder=".hecto" class="hecto" />
+						</div>
+						<div class="control_group">
+							<input type="text" placeholder=".centi" class="centi" />
+							<input type="text" placeholder=".deka" class="deka" />
+						</div>
+						<div class="control_group">
+							<input type="text" placeholder=".deci" class="deci" />
+							<input type="text" placeholder=".deci" class="deci" />
+						</div>
+
+						<div class="control_group"><input type="text" placeholder=".pico" class="pico" /></div>
+						<div class="control_group"><input type="text" placeholder=".nano" class="nano" /></div>
+						<div class="control_group"><input type="text" placeholder=".micro" class="micro" /></div>
+						<div class="control_group"><input type="text" placeholder=".milli" class="milli" /></div>
+						<div class="control_group"><input type="text" placeholder=".centi" class="centi" /></div>
+						<div class="control_group"><input type="text" placeholder=".deci" class="deci" /></div>
+						<div class="control_group"><input type="text" placeholder=".deka" class="deka" /></div>
+						<div class="control_group"><input type="text" placeholder=".hecto" class="hecto" /></div>
+						<div class="control_group"><input type="text" placeholder=".kilo" class="kilo" /></div>
+						<div class="control_group"><input type="text" placeholder=".mega" class="mega" /></div>
+						<div class="control_group"><input type="text" placeholder=".giga" class="giga" /></div>
+						<div class="control_group"><input type="text" placeholder=".tera" class="tera" /></div>
+					</form>
+			</div>
+		</section>
+
+		<section class="mod" id="buttons">
+			<header class="mod_header">
+				<h2>Buttons</h2>
+			</header>
+			<div class="mod_body">
+				<h3>With Icons</h3>
+				<p>
+					<a href="#" class="button" data-icon="check">Complete</a>
+				</p>
+				
+				<h3>Modifiers</h3>
+				<p>
+					<button type="button" disabled>Disabled</button>
+					<button type="button" class="secondary">.secondary</button>
+					<button type="button" class="warning">.warning</button>
+				</p>
+
+				<h3>Button Sizing</h3>
+				<p>
+					<a href="#" class="button button_mini">.button_mini</a>
+					<a href="#" class="button button_small">.button_small</a>
+					<a href="#" class="button">[Default]</a>
+					<a href="#" class="button button_large">.button_large</a>
+					<a href="#" class="button button_xlarge">.button_xlarge</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="mod" id="tables">
+			<header class="mod_header">
+				<h2>Tables</h2>
+			</header>
+			<div class="mod_body">
+				<h3>Simple</h3>
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th scope="col">Lorem</th>
+							<th scope="col">Ipsum</th>
+							<th scope="col">Dolor</th>
+							<th scope="col">Sit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">One</th>
+							<td>Russell</td>
+							<td>Kevin</td>
+							<td>Serge</td>
+							<td>Thabo</td>
+						</tr>
+						<tr>
+							<th scope="row">Two</th>
+							<td>Greg</td>
+							<td>Andre</td>
+							<td>Josh</td>
+							<td>Brandon</td>
+						</tr>
+						<tr>
+							<th scope="row">Three</th>
+							<td>Isiah</td>
+							<td>Joe</td>
+							<td>Bill</td>
+							<td>James</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h3>Striped</h3>
+				<p>Add the <code>striped</code> class to the <code>table</code> element. <span class="badge warning">Striped tables will not work in IE8 or below.</span></p>
+				<table class="striped">
+					<thead>
+						<tr>
+							<th></th>
+							<th scope="col">Lorem</th>
+							<th scope="col">Ipsum</th>
+							<th scope="col">Dolor</th>
+							<th scope="col">Sit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">One</th>
+							<td>Russell</td>
+							<td>Kevin</td>
+							<td>Serge</td>
+							<td>Thabo</td>
+						</tr>
+						<tr>
+							<th scope="row">Two</th>
+							<td>Greg</td>
+							<td>Andre</td>
+							<td>Josh</td>
+							<td>Brandon</td>
+						</tr>
+						<tr>
+							<th scope="row">Three</th>
+							<td>Isiah</td>
+							<td>Joe</td>
+							<td>Bill</td>
+							<td>James</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h3>Bordered</h3>
+				<p>Add the <code>bordered</code> class to the <code>table</code> element for a more traditionally styled grid.</p>
+				<table class="bordered">
+					<thead>
+						<tr>
+							<th></th>
+							<th scope="col">Lorem</th>
+							<th scope="col">Ipsum</th>
+							<th scope="col">Dolor</th>
+							<th scope="col">Sit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">One</th>
+							<td>Russell</td>
+							<td>Kevin</td>
+							<td>Serge</td>
+							<td>Thabo</td>
+						</tr>
+						<tr>
+							<th scope="row">Two</th>
+							<td>Greg</td>
+							<td>Andre</td>
+							<td>Josh</td>
+							<td>Brandon</td>
+						</tr>
+						<tr>
+							<th scope="row">Three</th>
+							<td>Isiah</td>
+							<td>Joe</td>
+							<td>Bill</td>
+							<td>James</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="mod m_list" id="lists">
+			<header class="mod_header">
+				<h2>Lists</h2>
+			</header>
+			<div class="mod_body">
+				<ul>
+					<li>Add the modifier class <code>m_list</code> to the parent <a href="#mod"><code>mod</code></a> element to create a dedicated list component.</li>
+					<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a> Aliquam tincidunt mauris eu risus.</li>
+					<li>
+						<form>
+					        <input type="text" placeholder="Email" class="micro">
+					        <input type="password" placeholder="Password" class="nano">
+
+					        <label for="remember" class="nano">
+					            <input id="remember-one" type="checkbox"><label for="remember-one"> Remember me</label>
+					        </label>
+
+					        <button type="submit" class="nano">Sign in</button>
+						</form>
+					</li>
+					<li>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="mod m_list" id="accordion">
+			<header class="mod_header">
+				<h2>Accordion List</h2>
+			</header>
+			<div class="mod_body">
+				<p>Accordion lists are typically used inside of an <a href="#lists"><code>m_list</code></a> component. Their structure consists of a parent <code>.acdn</code> element that contains a single <code>.acdn_header</code> and a single <code>.acdn_body</code> element. The content of the <code>acdn_body</code> elements do not necessarily need to be list items.</p>
+				<p>Initilaize accordion components in your project's JavaScript file with <code>$(".acdn").jnjAccordion()</code>.</p>
+				<ul>
+					<li class="acdn">
+						<div class="acdn_header">
+							<h4>Accordion Header Title</h4>
+						</div>
+						<div class="acdn_body">
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+						</div>
+					</li>
+					<li class="acdn">
+						<div class="acdn_header">
+							<h4>Another Title</h4>
+						</div>
+						<div class="acdn_body">
+							<ul>
+							   <li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
+							   <li><a href="#">Aliquam tincidunt mauris eu risus.</a></li>
+							   <li><a href="#">Vestibulum auctor dapibus neque.</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="acdn">
+						<div class="acdn_header">
+							<h4>Vestibulum auctor dapibus neque</h4>
+						</div>
+						<div class="acdn_body">
+							<ul>
+							   <li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a></li>
+							   <li><a href="#">Aliquam tincidunt mauris eu risus.</a></li>
+							   <li><a href="#">Vestibulum auctor dapibus neque.</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="mod" id="modals">
+			<header class="mod_header">
+				<h2>Modals</h2>
+			</header>
+			<div class="mod_body">
+				<p>You can control modals with the same classes used for other <a href="#grid">grid</a> and <a href="#mod"><code>.mod</code></a> components.</p>
+				<p>The sample below is invoked with the following syntax:</p>
+				<pre><code>$("#launch_sample_modal").on("click", function(){
+    var qBox = new QBox({
+        html: $("#sample_modal").html(),
+        className: "mod m_pop m_modal l_col_6"
+    });
+    qBox.show();
+});</code></pre>
+				<p><button type="button" id="launch_sample_modal">Launch Sample Modal</button></p>
+				<p>This is the default options object. All can be overridden.</p>
+				<pre><code>{ 
+    html : "",
+    modal : false,
+    showClose : true,
+    onOpen : function(){},
+    onClose : function(){},
+    className : "",
+    closeHTML : "&times;",
+    maskId : "qbMask",
+    contentId : "qbContent",
+    closeId : "qbClose",
+    autoCenter : true,
+    blurBackground : false
+}</code></pre>
+
+				<div id="sample_modal" style="display: none;">
+					<header class="mod_header">
+						<h3>Sample Modal Window</h3>
+					</header>
+					<div class="mod_body">
+						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="mod" id="alerts">
+			<header class="mod_header">
+				<h2>Alerts and Badges</h2>
+			</header>
+			<div class="mod_body">
+				<p>Add the class <code>sticky</code> to an alert to fix it to the bottom of the viewport.</p>
+				<div class="alert">
+					<p><strong>[Default]</strong> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+				</div>
+				<div class="alert message">
+					<p><strong>.message</strong> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+				</div>
+				<div class="alert error">
+					<p><strong>.error</strong> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+				</div>
+				<div class="alert warning">
+					<p><strong>.warning</strong> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+				</div>
+				<div class="alert success">
+					<p><strong>.success</strong> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+				</div>
+				<p>
+					<span class="badge">123</span>
+					<span class="badge message">Make sure to do a thing.</span>
+					<span class="badge error">OOPS!</span>
+					<span class="badge warning">-5</span>
+					<span class="badge success">Good Job!</span>
+				</p>
+				<p data-jnj-badgecontent="Whoa!" data-jnj-badgestyle="message">Use the <code>data-jnj-badgecontent</code> and <code>data-jnj-badgestyle</code> attributes on any element to append a badge after it.</p>
+			</div>
+		</section>
+
+	</main>
+</body>
+</html>
+
+	
