@@ -1,7 +1,0 @@
-.drawer .logo {
-	width: 2em;
-}
-.drawer.open .logo {
-	width: 4em;
-	margin-bottom: 0.6875em;
-}
