@@ -5,3 +5,6 @@
 	width: 4em;
 	margin-bottom: 0.6875em;
 }
+.l_col, .pico, .nano, .micro, .milli, .centi, .deci, .deka, .hecto, .kilo, .mega, .giga, .tera {
+	background-color: rgba(0, 0, 0, 0.1);
+}
