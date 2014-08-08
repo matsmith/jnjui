@@ -5,6 +5,12 @@
 	width: 4em;
 	margin-bottom: 0.6875em;
 }
+.source-tag {
+	float: right;
+	margin-top: 10px;
+	border: 1px solid #c85656;
+	padding: 10px;
+}
 .l_col, .pico, .nano, .micro, .milli, .centi, .deci, .deka, .hecto, .kilo, .mega, .giga, .tera {
 	background-color: rgba(0, 0, 0, 0.1);
 }
