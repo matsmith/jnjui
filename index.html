@@ -63,6 +63,7 @@
 	<main role="main">
 		<section class="mod">
 			<header class="mod_header">
+				<a class="source-tag" href="https://www.github.com/matsmith/jnjui/">view source</a>
 				<h1>JNJUI</h1>
 			</header>
 			<div class="mod_body copy">
@@ -675,33 +676,29 @@
 			<div class="mod_body">
 				<p>You can control modals with the same classes used for other <a href="#grid">grid</a> and <a href="#mod"><code>.mod</code></a> components.</p>
 				<p>The sample below is invoked with the following syntax:</p>
-<pre><code>
-$("#launch_sample_modal").on("click", function(){
-	var qBox = new QBox({
-		html: $("#sample_modal").html(),
-		className: "mod m_pop m_modal l_col_6"
-	});
-	qBox.show();
-});
-</code></pre>
+				<pre><code>$("#launch_sample_modal").on("click", function(){
+    var qBox = new QBox({
+        html: $("#sample_modal").html(),
+        className: "mod m_pop m_modal l_col_6"
+    });
+    qBox.show();
+});</code></pre>
 				<p><button type="button" id="launch_sample_modal">Launch Sample Modal</button></p>
 				<p>This is the default options object. All can be overridden.</p>
-<pre><code>
-{
-	html : "",
-	modal : false,
-	showClose : true,
-	onOpen : function(){},
-	onClose : function(){},
-	className : "",
-	closeHTML : "&times;",
-	maskId : "qbMask",
-	contentId : "qbContent",
-	closeId : "qbClose",
-	autoCenter : true,
-	blurBackground : false
-}
-</code></pre>
+				<pre><code>{ 
+    html : "",
+    modal : false,
+    showClose : true,
+    onOpen : function(){},
+    onClose : function(){},
+    className : "",
+    closeHTML : "&times;",
+    maskId : "qbMask",
+    contentId : "qbContent",
+    closeId : "qbClose",
+    autoCenter : true,
+    blurBackground : false
+}</code></pre>
 
 				<div id="sample_modal" style="display: none;">
 					<header class="mod_header">
@@ -750,3 +747,5 @@ $("#launch_sample_modal").on("click", function(){
 	</main>
 </body>
 </html>
+
+	
